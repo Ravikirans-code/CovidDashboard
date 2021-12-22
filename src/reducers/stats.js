@@ -7,7 +7,6 @@ export default function (state = [], action) {
         case TIMELINE_STAT:
             // return [action.payload.data];
             return { ...state, ...{ [TIMELINE_STAT]: action.payload.data } };
-        // return [...state, action.payload.data];
         default: return state;
     }
 }

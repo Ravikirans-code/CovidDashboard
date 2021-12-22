@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import _ from 'loadash';
 import './homepage.css';
 import StateCard from "../state/StateCard";
 import FilterBar from "../filterBar/filterBar";
@@ -28,19 +27,17 @@ class HomePage extends React.Component {
     handleCurrentView = (view, stateData) => {
         if (view === TIMELINE_STAT) {
             this.props.timelineState()
-            this.state.stateData = stateData
+            // this.state.stateData = stateData
         }
-        this.setState({ currentView: view });
+        this.setState({ currentView: view, searchState: "", stateData: stateData });
     }
     renderStateCard() {
         if (this.state.currentView === BASIC_STAT) {
             return this.props.statistics === undefined ? true : Object.entries(this.props.statistics).map(([key, value], index) => {
                 var re = new RegExp(this.state.searchState, 'gi');
                 if (key.match(re)) {
-                    this.state.States = false;
                     return <StateCard handleCurrentView={this.handleCurrentView} data={[key, value]} />
                 } else {
-                    this.state.States = true;
                     return false;
                 }
 
@@ -50,9 +47,9 @@ class HomePage extends React.Component {
             return this.props.timeline === undefined ? true : Object.entries(this.props.timeline).map(([key, value], index) => {
                 return this.state.stateData[0] === key ?
                     Object.entries(value.dates).map(([key1, value1]) => {
-                        if (key1 !== undefined && key1 == this.state.dates) {
+                        if (key1 !== undefined && key1 === this.state.dates) {
                             return <DeatilPage data={[key, { 'dates': { [key1]: value1 } }]} />
-                        }else{
+                        } else {
                             return false
                         }
 
@@ -71,9 +68,6 @@ class HomePage extends React.Component {
                 newArr = newArr.concat(StateDA[i]);
             }
             StateDA = newArr;
-            console.log('asadad ds d sd', StateDA)
-            // StateDA = StateDA.reduce((r, e) => (r.push(...e), r), [])
-            // StateDA = StateDA[0]
         }
         return <>
             <div className="header">
@@ -91,27 +85,6 @@ class HomePage extends React.Component {
                         <h2 className="search-message-empty-message">Nope, nothing.</h2>
                     </div> : StateDA}
                 </div>
-                {/* <div className="rightcolumn">
-                    <div className="card">
-                        <h2>About Me</h2>
-                        <div className="fakeimg" style={{ height: 100 }}>
-                            Image
-                        </div>
-                        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                    </div>
-                    <div className="card">
-                        <h3>Popular Post</h3>
-                        <div className="fakeimg">Image</div>
-                        <br />
-                        <div className="fakeimg">Image</div>
-                        <br />
-                        <div className="fakeimg">Image</div>
-                    </div>
-                    <div className="card">
-                        <h3>Follow Me</h3>
-                        <p>Some text..</p>
-                    </div>
-                </div> */}
             </div>
         </>
     }

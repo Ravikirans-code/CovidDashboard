@@ -2,7 +2,7 @@ import React from 'react';
 import './filterBar.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { BASIC_STAT, TIMELINE_STAT } from '../../actions';
+import { BASIC_STAT } from '../../actions';
 class FilterBar extends React.Component {
     constructor(props) {
         super(props);

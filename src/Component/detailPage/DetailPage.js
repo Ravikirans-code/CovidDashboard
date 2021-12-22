@@ -1,6 +1,5 @@
 import React from 'react';
 import './detailPage.css';
-import { BASIC_STAT } from '../../actions'
 class DeatilPage extends React.Component {
     constructor(props) {
         super(props);
@@ -60,14 +59,6 @@ class DeatilPage extends React.Component {
                         }
                     </tr>
                 })}
-                {/* <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> */}
             </table>
 
         </div>
