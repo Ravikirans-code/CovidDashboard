@@ -1,0 +1,22 @@
+.detailPage table,
+.detailPage th,
+.detailPage td {
+    border: 1px solid black;
+}
+
+.detailPage table,
+.detailPage th,
+.detailPage table td {
+    padding: 5px;
+}
+
+.detailPage .center {
+    margin: 0 auto;
+    font-size: 12px;
+    width: calc(100% - 50px);
+}
+
+.detailPage .noBorder td {
+    border: none;
+    text-transform: capitalize;
+}
